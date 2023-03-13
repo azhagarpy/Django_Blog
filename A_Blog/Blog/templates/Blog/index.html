@@ -1,0 +1,25 @@
+{% extends 'Blog/layout.html' %}
+{% block title %}INDEX{% endblock title %}
+{% block content %}
+<h1 class="heading">Trending Blogs</h1>
+{% for item in data.blogs %}
+<div class="blog">
+    <h1>Blog Title: {{item.blogs.Title}}</h1>
+    <p>Date: {{item.date}}</p>
+    <p>{{item.content}}</p>
+    <p>Category: {{item.Category}}</p>
+    <p>Likes: {{item.likes}}</p>
+</div>
+
+{% endfor %}
+
+{% for i in data.comments.comments.all %}
+{% for j in data.blogs.Title.all %}
+{% if i == j %}
+{{i.c}}
+{% else %}
+no
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endblock content %}
