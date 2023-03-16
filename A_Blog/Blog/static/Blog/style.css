@@ -1,21 +1,3 @@
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-}
-.heading{
-    height: 100px;
-    width: 100%;
-    text-align: center;
-    color: aqua;
-    background-color: antiquewhite;
-    line-height: 100px;
-}
-.blog{
-    height: 20vh;
-    width: 100%;
-    border-bottom:1px solid black ;
-}
-.blog p{
-    line-height: 30px;
+.row{
+    background-color: aquamarine;
 }

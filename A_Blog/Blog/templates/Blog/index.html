@@ -1,25 +1,36 @@
 {% extends 'Blog/layout.html' %}
 {% block title %}INDEX{% endblock title %}
 {% block content %}
-<h1 class="heading">Trending Blogs</h1>
-{% for item in data.blogs %}
-<div class="blog">
-    <h1>Blog Title: {{item.blogs.Title}}</h1>
-    <p>Date: {{item.date}}</p>
-    <p>{{item.content}}</p>
-    <p>Category: {{item.Category}}</p>
-    <p>Likes: {{item.likes}}</p>
-</div>
+<!-- 
 
-{% endfor %}
+    link css
+-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Blog/style.css' %}">
 
-{% for i in data.comments.comments.all %}
-{% for j in data.blogs.Title.all %}
-{% if i == j %}
-{{i.c}}
-{% else %}
-no
-{% endif %}
-{% endfor %}
-{% endfor %}
+
+<!--
+    show all blogs
+-->
+
+    <div class="container bg-light p-5">
+        <div class="row  text-info">
+            <h1 class="offset-4 offset-lg-5">Trending Blogs</h1>
+        </div>
+        {% for item in blogs %}
+        <div class="">
+            <h1 class="row blog-title">{{item.Title}}</h1>
+            <p class="row blog-date">{{item.date}}</p>
+            <p class="row blog-content">{{item.content}}</p>
+            <p class="row blog-category">{{item.Category}}</p>
+            <p class="row blog-likes">{{item.likes}}</p>
+            {% for i in comments %}
+            {% if item.id == i.c.id %}
+            <h2 class="col-md-5 bg-info ">{{i.comments}}</h1>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+        </div>
+    </div>
+
 {% endblock content %}
