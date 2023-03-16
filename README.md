@@ -6,4 +6,7 @@ Steps To Run:
 
 3.pip install requirements.txt
 
+4.cd A_Blog
+
+5.python manage.py runserver
 
