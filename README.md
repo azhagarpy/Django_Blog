@@ -1,9 +1,3 @@
-# Django_Blog
+Steps To Run:
 
-
-a new line added
-
-one more a new line added
-
-
-success
+1.git clone 
