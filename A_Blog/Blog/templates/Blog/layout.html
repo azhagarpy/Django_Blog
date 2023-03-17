@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{% static 'Blog/bootstrap.min.css' %}">
 </head>
 <body>
+{% include 'Blog/navbar.html' %}
     {% block content %}{% endblock content %}
+{% include 'Blog/footer.html' %}
 </body>
 </html>

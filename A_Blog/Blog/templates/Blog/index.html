@@ -12,24 +12,27 @@
 <!--
     show all blogs
 -->
-
-    <div class="container bg-light p-5">
+    <div class="container  my-4">
         <div class="row  text-info">
-            <h1 class="offset-4 offset-lg-5">Trending Blogs</h1>
+            <h1 class="offset-4 m-a">Trending Blogs</h1>
         </div>
         {% for item in blogs %}
-        <div class="">
+        <div class=" blog">
             <h1 class="row blog-title">{{item.Title}}</h1>
-            <p class="row blog-date">{{item.date}}</p>
-            <p class="row blog-content">{{item.content}}</p>
+            <p class="row blog-date fs">{{item.date}}</p>
+            <h4 class="row blog-content">{{item.content}}</h4>
             <p class="row blog-category">{{item.Category}}</p>
-            <p class="row blog-likes">{{item.likes}}</p>
+            <p class="row blog-likes"><span><i class="fa-regular fa-thumbs-up fa-xl col-1"></i></span>{{item.likes}}</p>
+            <p>Comments</p>
             {% for i in comments %}
             {% if item.id == i.c.id %}
-            <h2 class="col-md-5 bg-info ">{{i.comments}}</h1>
+            <p class="col-md-6 text-primary">{{i.comments}}</p>
+
                 {% endif %}
                 {% endfor %}
+            <hr>
                 {% endfor %}
+
         </div>
     </div>
 
