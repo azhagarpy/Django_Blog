@@ -1,7 +1,21 @@
+<style>
+.navbar{
+    position: sticky;
+    top: 0px;
+    background-color:black;
+}
+.logo-txt{
+    font-size:large;
+    font-weight: bold;
+    text-transform: none;
+    text-decoration: none;
+    font-style: normal;
+}
+</style>
 <div class="navbar container ">
-    <h1 class="logo">Django-Blog</h1>
-    <a href="#" class="nav-link">Home</a>
-    <a href="#" class="nav-link">Categorys</a>
+    <a class="nav-link logo-txt" href="/">Django-Blog</a>
+    <a href="/" class="nav-link">Home</a>
+    <a href="{% url 'categorys' %}" class="nav-link">Categorys</a>
     <a href="#" class="nav-link">About</a>
     <a href="#" class="nav-link">Contact</a>
 </div>

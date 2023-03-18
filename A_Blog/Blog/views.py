@@ -10,3 +10,5 @@ def home(request):
     return render(request,'Blog/index.html',data)
 
 
+def category(request):
+    return render(request,'Blog/categorys.html')
