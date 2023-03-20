@@ -1,19 +1,56 @@
 {% extends 'Blog/layout.html' %}
-{% block title %}INDEX{% endblock title %}
+{% block title %}CATEGORYS{% endblock title %}
 {% block content %}
 <!-- 
 
     link css
 -->
 <style>
-
+.category{
+    display: flex;
+    flex-direction:column;
+    border: 1px solid black;
+    height: 50vh;
+    width: 100%;
+    margin: 2%;
+    border-radius: 20px;
+}
+.details_category{
+    height: 29%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.category img{
+    height: 70%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.category div p{
+    font-size: small;
+}
 </style>
 
 <!--
     show all blogs
 -->
 <div>
-    category called
+<div class="categorys col-12">
+{% for category in categorys %}
+<div class="category m-a">
+    <img src="{{category.CategoryImage.url}}" alt="category image">
+    <div class="details_category">
+        <div>
+            <h1>{{category.CategoryName}}</h1>
+            <p>{{category.CategoryDate}}</p>
+        </div>
+        <div>
+            <a href="{% url 'blog_category' cid=category.id %}">Vistit {{category.CategoryName}} Blogs</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
 </div>
 
 {% endblock content %}

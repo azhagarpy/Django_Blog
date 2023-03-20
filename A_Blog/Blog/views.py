@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .import models
-import json
+
+
 # Create your views here.
 
 def home(request):
@@ -11,4 +12,10 @@ def home(request):
 
 
 def category(request):
-    return render(request,'Blog/categorys.html')
+    data=models.Category.objects.all()
+    return render(request,'Blog/categorys.html',{'categorys':data})
+
+def blog_category(request,cid):
+    comments=models.Comments.objects.all()
+    data=models.Blog.objects.filter(id=cid)
+    return render(request,'Blog/blog_category.html',{'data':data,'comments':comments})

@@ -1,0 +1,54 @@
+{% extends 'Blog/layout.html' %}
+{% block title %}INDEX{% endblock title %}
+{% block content %}
+<!-- 
+
+    link css
+-->
+{% load static %}
+<style>
+    .fs {
+        font-size: 70%;
+    }
+
+    .fa-thumbs-up:hover {
+        color: blue;
+    }
+    .blog{
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        padding-left: 5%;
+    }
+    .comment{
+        cursor: pointer;
+    }
+</style>
+
+<!--
+    show all blogs
+-->
+<div class="my-4">
+    <div class="row  text-info">
+        <h1 class="offset-4 m-a">Trending Blogs</h1>
+    </div>
+    {% for item in data %}
+    <div class=" blog container">
+        <h1 class="row blog-title">{{item.Title}}</h1>
+        <p class="row blog-date fs">{{item.date}}</p>
+        <h4 class="row blog-content">{{item.content}}</h4>
+        <p class="row blog-category">{{item.Category}}</p>
+        <p class="row blog-likes"><span><i class="fa-regular fa-thumbs-up fa-xl col-1"></i></span>{{item.likes}}</p>
+        <p>Comments</p>
+        {% for i in comments %}
+        {% if item.id == i.blog_id.id%}
+        <p class="col-md-6 text-primary comment">{{i.comments}}</p>
+
+        {% endif %}
+        {% endfor %}
+    </div>
+        {% endfor %}
+
+</div>
+
+{% endblock content %}

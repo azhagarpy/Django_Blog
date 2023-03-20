@@ -1,12 +1,13 @@
 from django.db import models
 from datetime import datetime
+import os
 # Create your models here.
 
 def imgsave(request,filename):
     old_filename=filename
     ctime=datetime.now()
     new_filename=f'{ctime}{old_filename}'
-    return new_filename
+    return os.path.join('images/',new_filename)
 
 
 class Category(models.Model):
