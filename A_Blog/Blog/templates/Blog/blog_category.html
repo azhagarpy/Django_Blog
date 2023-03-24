@@ -19,6 +19,7 @@
         display: flex;
         flex-direction: column;
         padding-left: 5%;
+        margin: 2vh 0px;
     }
     .comment{
         cursor: pointer;
@@ -38,8 +39,12 @@
         <p class="row blog-date fs">{{item.date}}</p>
         <h4 class="row blog-content">{{item.content}}</h4>
         <p class="row blog-category">{{item.Category}}</p>
-        <p class="row blog-likes"><span><i class="fa-regular fa-thumbs-up fa-xl col-1"></i></span>{{item.likes}}</p>
-        <p>Comments</p>
+        <p class="row blog-likes">{{item.likes}}<span><a href="{% url 'add_like' item.id %}"><span><i class="fa-regular fa-thumbs-up fa-xl col-1"></i></span></a></span></p>        <p>Comments</p>
+        <form action="{% url 'add_comment' item.id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="comment">
+            <button>ADD</button>
+        </form>
         {% for i in comments %}
         {% if item.id == i.blog_id.id%}
         <p class="col-md-6 text-primary comment">{{i.comments}}</p>

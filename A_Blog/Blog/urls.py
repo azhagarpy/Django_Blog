@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('categorys/',views.category,name='categorys'),
-    path('blog_category/<int:cid>',views.blog_category,name='blog_category')
+    path('blog_category/<int:cid>',views.blog_category,name='blog_category'),
+    path('add_comment/<int:cid>',views.add_comment,name='add_comment'),
+    path('add_like/<int:blog_id>',views.add_like,name='add_like')
 ]

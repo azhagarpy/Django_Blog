@@ -14,14 +14,26 @@
     .fa-thumbs-up:hover {
         color: blue;
     }
-    .blog{
+
+    .blog {
         border: 1px solid black;
         display: flex;
         flex-direction: column;
         padding-left: 5%;
     }
-    .comment{
+
+    .comment {
         cursor: pointer;
+    }
+
+    .message_accpted {
+        color: green;
+        background-color: aqua;
+        border-radius: 5px;
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        margin-left: 20%;
     }
 </style>
 
@@ -32,22 +44,29 @@
     <div class="row  text-info">
         <h1 class="offset-4 m-a">Trending Blogs</h1>
     </div>
+    {% include 'Blog/message.html' %}
     {% for item in blogs %}
     <div class=" blog container">
         <h1 class="row blog-title">{{item.Title}}</h1>
         <p class="row blog-date fs">{{item.date}}</p>
         <h4 class="row blog-content">{{item.content}}</h4>
         <p class="row blog-category">{{item.Category}}</p>
-        <p class="row blog-likes"><span><i class="fa-regular fa-thumbs-up fa-xl col-1"></i></span>{{item.likes}}</p>
+        <p class="row blog-likes">{{item.likes}}<span><a href="{% url 'add_like' item.id %}"><span><i
+                            class="fa-regular fa-thumbs-up fa-xl col-1"></i></span></a></span></p>
         <p>Comments</p>
+        <form action="{% url 'add_comment' item.id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="comment">
+            <button>ADD</button>
+        </form>
         {% for i in comments %}
         {% if item.id == i.blog_id.id%}
-        <p class="col-md-6 text-primary comment">{{i.comments}}</p>
+        <p class="col-md-6 text-primary comment">{{i.comments}} <span class="message_accpted">{% if i.comment_accepted%}yes{% endif %}</span></p>
 
         {% endif %}
         {% endfor %}
     </div>
-        {% endfor %}
+    {% endfor %}
 
 </div>
 
